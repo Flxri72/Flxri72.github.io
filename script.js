@@ -1,220 +1,338 @@
-// Version selection logic
-document.addEventListener('DOMContentLoaded', function() {
-    const versionModal = document.getElementById('version-modal');
-    const mobileBtn = document.getElementById('mobile-version');
-    const pcBtn = document.getElementById('pc-version');
-    const body = document.body;
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Check if version was already selected
-    const selectedVersion = localStorage.getItem('selectedVersion');
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
 
-    if (!selectedVersion) {
-        // Show modal if no version selected
-        versionModal.classList.remove('hidden');
-    } else {
-        // Apply saved version
-        applyVersion(selectedVersion);
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e3f2fd;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    padding: 150px 0 100px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.btn {
+    display: inline-block;
+    background-color: white;
+    color: #007bff;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e3f2fd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #007bff;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto;
+}
+
+/* About Section */
+.about {
+    background-color: white;
+    animation: fadeIn 1s ease-out;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h3 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.about-text h4 {
+    color: #0056b3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-text ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-text li {
+    margin-bottom: 0.5rem;
+}
+
+/* Services Section */
+.services {
+    background-color: #e3f2fd;
+    animation: fadeIn 1s ease-out;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out both;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects {
+    background-color: white;
+    animation: fadeIn 1s ease-out;
+}
+
+.project-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-form h3 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.project-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-form input,
+.project-form textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.project-form input:focus,
+.project-form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease-out both;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h4 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+}
+
+.project-card a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.footer h2 {
+    color: white;
+}
+
+.footer h2::after {
+    background-color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-
-    // Handle mobile version selection
-    mobileBtn.addEventListener('click', function() {
-        localStorage.setItem('selectedVersion', 'mobile');
-        versionModal.classList.add('hidden');
-        applyVersion('mobile');
-    });
-
-    // Handle PC version selection
-    pcBtn.addEventListener('click', function() {
-        localStorage.setItem('selectedVersion', 'pc');
-        versionModal.classList.add('hidden');
-        applyVersion('pc');
-    });
-
-    function applyVersion(version) {
-        if (version === 'mobile') {
-            body.classList.add('mobile-version');
-        } else {
-            body.classList.remove('mobile-version');
-        }
-    }
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Project management
-const projectForm = document.getElementById('projectForm');
-const projectsList = document.getElementById('projectsList');
-const API_BASE_URL = 'http://localhost:3001/api';
-
-// Load projects from GitHub
-async function loadProjects() {
-    try {
-        console.log('Loading GitHub projects...');
-        const response = await fetch(`${API_BASE_URL}/github/repos`);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const githubRepos = await response.json();
-        console.log('GitHub repos loaded:', githubRepos);
-
-        // Transform GitHub repos to match our project format
-        const projects = githubRepos.map(repo => ({
-            name: repo.name,
-            title: repo.name,
-            description: repo.description || 'Proyecto en desarrollo',
-            html_url: repo.html_url,
-            topics: repo.topics || [],
-            language: repo.language,
-            isGitHub: true
-        }));
-
-        displayProjects(projects);
-    } catch (error) {
-        console.error('Error loading GitHub projects:', error);
-        // Fallback: show a message or keep existing projects
-        alert('No se pudieron cargar los proyectos de GitHub. Verifica la conexión al servidor.');
+    to {
+        opacity: 1;
     }
 }
 
-// Display projects
-function displayProjects(projects) {
-    const projectsGrid = document.querySelector('.projects-grid');
-    // Clear existing projects but keep the upload section
-    const existingCards = projectsGrid.querySelectorAll('.project-card');
-    existingCards.forEach(card => card.remove());
-
-    projects.forEach((project, index) => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-
-        // Get language tags from GitHub topics or use default
-        const tags = project.isGitHub ? (project.topics || []).slice(0, 3) : [];
-        const tagsHtml = tags.length > 0 ? tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
-
-        // Choose icon based on project name or description
-        let icon = '💻';
-        if (project.name?.toLowerCase().includes('bot') || project.description?.toLowerCase().includes('bot')) {
-            icon = '🤖';
-        } else if (project.name?.toLowerCase().includes('report') || project.description?.toLowerCase().includes('report')) {
-            icon = '📊';
-        } else if (project.name?.toLowerCase().includes('whatsapp') || project.description?.toLowerCase().includes('whatsapp')) {
-            icon = '💬';
-        }
-
-        projectCard.innerHTML = `
-            <div class="project-image">${icon}</div>
-            <div class="project-content">
-                <h3>${project.title || project.name}</h3>
-                <p>${project.description || 'Sin descripción disponible'}</p>
-                <div class="project-tags">
-                    ${tagsHtml}
-                    ${project.isGitHub ? '<span class="tag" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;">GitHub</span>' : ''}
-                </div>
-                ${project.html_url ? `<a href="${project.html_url}" target="_blank" class="btn btn-secondary" style="margin-top: 15px; display: inline-block;">Ver en GitHub</a>` : ''}
-            </div>
-        `;
-        projectsGrid.appendChild(projectCard);
-    });
-}
-
-// Add new project
-projectForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const title = document.getElementById('projectTitle').value;
-    const description = document.getElementById('projectDescription').value;
-    const link = document.getElementById('projectLink').value;
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/projects`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ title, description, link })
-        });
-
-        if (response.ok) {
-            // Add to local storage as well
-            const projects = JSON.parse(localStorage.getItem('projects')) || [];
-            projects.push({ title, description, link });
-            localStorage.setItem('projects', JSON.stringify(projects));
-
-            loadProjects(); // Reload projects
-            projectForm.reset();
-            alert('Proyecto agregado exitosamente!');
-        } else {
-            throw new Error('Error adding project');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al agregar el proyecto. Inténtalo de nuevo.');
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-});
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationDelay = '0s';
-            entry.target.style.animationPlayState = 'running';
-        }
-    });
-}, observerOptions);
-
-// Observe elements with animations
-document.querySelectorAll('.service-card, .project-card').forEach(card => {
-    observer.observe(card);
-});
-
-// Typing effect for hero subtitle
-const heroSubtitle = document.querySelector('.hero-content p');
-const text = heroSubtitle.textContent;
-heroSubtitle.textContent = '';
-let i = 0;
-
-function typeWriter() {
-    if (i < text.length) {
-        heroSubtitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-// Start typing effect when page loads
-window.addEventListener('load', () => {
-    loadProjects();
-    setTimeout(typeWriter, 1000);
-});
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-});
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-// Mobile menu toggle (if needed in future)
-function toggleMenu() {
-    const nav = document.querySelector('nav ul');
-    nav.classList.toggle('active');
+    nav ul li {
+        margin-left: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .services-grid,
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
 }
