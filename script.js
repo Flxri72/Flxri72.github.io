@@ -1,3 +1,44 @@
+// Version selection logic
+document.addEventListener('DOMContentLoaded', function() {
+    const versionModal = document.getElementById('version-modal');
+    const mobileBtn = document.getElementById('mobile-version');
+    const pcBtn = document.getElementById('pc-version');
+    const body = document.body;
+
+    // Check if version was already selected
+    const selectedVersion = localStorage.getItem('selectedVersion');
+
+    if (!selectedVersion) {
+        // Show modal if no version selected
+        versionModal.classList.remove('hidden');
+    } else {
+        // Apply saved version
+        applyVersion(selectedVersion);
+    }
+
+    // Handle mobile version selection
+    mobileBtn.addEventListener('click', function() {
+        localStorage.setItem('selectedVersion', 'mobile');
+        versionModal.classList.add('hidden');
+        applyVersion('mobile');
+    });
+
+    // Handle PC version selection
+    pcBtn.addEventListener('click', function() {
+        localStorage.setItem('selectedVersion', 'pc');
+        versionModal.classList.add('hidden');
+        applyVersion('pc');
+    });
+
+    function applyVersion(version) {
+        if (version === 'mobile') {
+            body.classList.add('mobile-version');
+        } else {
+            body.classList.remove('mobile-version');
+        }
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
