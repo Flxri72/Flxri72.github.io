@@ -693,160 +693,296 @@
             }
         }
 
-        /* Mobile Version Optimizations */
+        /* Mobile Version Optimizations - Better Organization */
+        body.mobile-version {
+            text-align: center; /* Center all text by default */
+        }
+
         body.mobile-version .hero {
-            padding: 120px 20px;
+            padding: 100px 15px 80px;
+            min-height: auto; /* Remove fixed height for better mobile flow */
         }
 
         body.mobile-version .hero-content {
-            gap: 60px;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+        }
+
+        body.mobile-version .hero-text {
+            order: 1; /* Text comes first on mobile */
         }
 
         body.mobile-version .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 25px;
+            font-size: 36px;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         body.mobile-version .hero-text h2 {
-            font-size: 24px;
-            margin-bottom: 25px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
 
         body.mobile-version .hero-text p {
             font-size: 16px;
-            line-height: 1.9;
-            margin-bottom: 35px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        body.mobile-version .hero-image {
+            order: 2; /* Code window comes after text */
+            max-width: 320px;
         }
 
         body.mobile-version .cta-buttons {
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
+            margin-top: 10px;
         }
 
         body.mobile-version .btn {
-            padding: 14px 30px;
-            font-size: 15px;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        body.mobile-version .services-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        body.mobile-version .service-card {
-            padding: 35px 25px;
-        }
-
-        body.mobile-version .service-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        body.mobile-version .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        body.mobile-version .projects-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        body.mobile-version .project-card {
-            padding: 25px;
-        }
-
-        body.mobile-version .project-content h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        body.mobile-version .about-container {
-            gap: 50px;
-        }
-
-        body.mobile-version .about-content {
-            padding: 40px 20px;
-        }
-
-        body.mobile-version .about-content h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        body.mobile-version .skills-grid {
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        body.mobile-version .skill-item {
-            padding: 12px;
-        }
-
-        body.mobile-version .education-item {
-            padding: 15px;
-        }
-
-        body.mobile-version .abilities-list {
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        body.mobile-version .abilities-list li {
-            padding: 10px 15px;
-        }
-
-        body.mobile-version .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        body.mobile-version .contact-card {
-            padding: 30px 20px;
-        }
-
-        body.mobile-version .section-title {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        body.mobile-version .section-subtitle {
+            padding: 16px 24px;
             font-size: 16px;
-            margin-bottom: 50px;
+            width: 100%;
+            max-width: 300px;
+            font-weight: 600;
         }
 
-        body.mobile-version header {
-            padding: 15px 20px;
-        }
-
-        body.mobile-version .logo {
-            font-size: 20px;
-        }
-
-        body.mobile-version .nav-links {
-            gap: 15px;
-        }
-
-        body.mobile-version .nav-links a {
-            font-size: 14px;
-        }
-
+        /* Better section organization */
         body.mobile-version .services,
         body.mobile-version .projects,
         body.mobile-version .about,
         body.mobile-version .contact {
-            padding: 70px 20px;
+            padding: 60px 15px;
         }
 
-        body.mobile-version .code-window {
+        body.mobile-version .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        body.mobile-version .section-subtitle {
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            max-width: 100%;
+        }
+
+        /* Better card organization */
+        body.mobile-version .services-grid,
+        body.mobile-version .projects-grid,
+        body.mobile-version .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        body.mobile-version .service-card,
+        body.mobile-version .project-card,
+        body.mobile-version .contact-card {
+            padding: 25px 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        body.mobile-version .service-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        body.mobile-version .service-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .service-features {
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.mobile-version .service-features li {
+            font-size: 13px;
+            padding: 4px 0 4px 20px;
+            line-height: 1.4;
+        }
+
+        body.mobile-version .project-content h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        body.mobile-version .project-content p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .project-tags {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        /* Better about section organization */
+        body.mobile-version .about-container {
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        body.mobile-version .about-content {
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 100%;
+            text-align: left;
+        }
+
+        body.mobile-version .about-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        body.mobile-version .about-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        body.mobile-version .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        body.mobile-version .skill-item {
             padding: 15px;
+            text-align: left;
+        }
+
+        body.mobile-version .skill-name {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        body.mobile-version .education {
+            margin-top: 30px;
+        }
+
+        body.mobile-version .education h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        body.mobile-version .education-item {
+            padding: 20px 15px;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .education-item h5 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        body.mobile-version .education-item p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        body.mobile-version .abilities-list {
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        body.mobile-version .abilities-list li {
+            padding: 12px 16px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        /* Better navigation organization */
+        body.mobile-version header {
+            padding: 12px 15px;
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        body.mobile-version .logo {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        body.mobile-version .logo img {
+            width: 25px;
+            height: 32px;
+        }
+
+        body.mobile-version nav {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        body.mobile-version .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        body.mobile-version .nav-links a {
+            font-size: 13px;
+            padding: 5px 10px;
+            white-space: nowrap;
+        }
+
+        /* Better code window organization */
+        body.mobile-version .code-window {
+            padding: 20px;
+            max-width: 100%;
         }
 
         body.mobile-version .code-content {
-            font-size: 12px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        body.mobile-version .window-header {
+            margin-bottom: 12px;
+        }
+
+        body.mobile-version .window-btn {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* Better footer organization */
+        body.mobile-version footer {
+            padding: 30px 15px;
+            text-align: center;
+        }
+
+        body.mobile-version footer p {
+            font-size: 14px;
         }
 
         /* Mobile Modal Adjustments */
@@ -1378,8 +1514,10 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 60;
-        const connectionDistance = 120;
+        // Reduce particle count and connection distance for mobile version
+        const isMobile = document.body.classList.contains('mobile-version');
+        const particleCount = isMobile ? 20 : 60;
+        const connectionDistance = isMobile ? 80 : 120;
 
         // Mouse interaction variables
         let mouseX = canvas.width / 2;
@@ -1449,45 +1587,70 @@
         }
 
         function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+            // Skip complex connections on mobile for better performance
+            if (isMobile) {
+                // Simple, minimal connections for mobile
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < connectionDistance) {
-                        // Calculate mouse influence on connections
-                        const midX = (particles[i].x + particles[j].x) / 2;
-                        const midY = (particles[i].y + particles[j].y) / 2;
-                        const mouseDistToMid = Math.sqrt((mouseX - midX) ** 2 + (mouseY - midY) ** 2);
-
-                        let opacity = 1 - (distance / connectionDistance);
-                        let lineWidth = 0.5 + opacity * 1.5;
-                        let color = `rgba(100, 150, 255, ${opacity * 0.4})`;
-
-                        // Enhance connections near mouse
-                        if (mouseDistToMid < mouseRadius) {
-                            const mouseInfluence = 1 - (mouseDistToMid / mouseRadius);
-                            opacity = Math.min(1, opacity + mouseInfluence * 0.6);
-                            lineWidth = 0.5 + opacity * 2.5;
-                            // Dynamic color gradient based on mouse proximity
-                            const hue = 200 + mouseInfluence * 60; // Blue to cyan
-                            color = `hsla(${hue}, 70%, 60%, ${opacity})`;
-                        } else {
-                            opacity *= 0.2;
+                        if (distance < connectionDistance) {
+                            const opacity = (1 - (distance / connectionDistance)) * 0.1; // Much more subtle
+                            ctx.save();
+                            ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                            ctx.restore();
                         }
+                    }
+                }
+            } else {
+                // Full connection logic for desktop
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
 
-                        ctx.save();
-                        ctx.strokeStyle = color;
-                        ctx.lineWidth = lineWidth;
-                        ctx.shadowBlur = opacity * 15;
-                        ctx.shadowColor = color;
-                        ctx.globalCompositeOperation = 'lighter'; // Additive blending for glow
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.restore();
+                        if (distance < connectionDistance) {
+                            // Calculate mouse influence on connections
+                            const midX = (particles[i].x + particles[j].x) / 2;
+                            const midY = (particles[i].y + particles[j].y) / 2;
+                            const mouseDistToMid = Math.sqrt((mouseX - midX) ** 2 + (mouseY - midY) ** 2);
+
+                            let opacity = 1 - (distance / connectionDistance);
+                            let lineWidth = 0.5 + opacity * 1.5;
+                            let color = `rgba(100, 150, 255, ${opacity * 0.4})`;
+
+                            // Enhance connections near mouse
+                            if (mouseDistToMid < mouseRadius) {
+                                const mouseInfluence = 1 - (mouseDistToMid / mouseRadius);
+                                opacity = Math.min(1, opacity + mouseInfluence * 0.6);
+                                lineWidth = 0.5 + opacity * 2.5;
+                                // Dynamic color gradient based on mouse proximity
+                                const hue = 200 + mouseInfluence * 60; // Blue to cyan
+                                color = `hsla(${hue}, 70%, 60%, ${opacity})`;
+                            } else {
+                                opacity *= 0.2;
+                            }
+
+                            ctx.save();
+                            ctx.strokeStyle = color;
+                            ctx.lineWidth = lineWidth;
+                            ctx.shadowBlur = opacity * 15;
+                            ctx.shadowColor = color;
+                            ctx.globalCompositeOperation = 'lighter'; // Additive blending for glow
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                            ctx.restore();
+                        }
                     }
                 }
             }
@@ -1500,7 +1663,13 @@
                 p.draw();
             });
             connectParticles();
-            requestAnimationFrame(animate);
+
+            // Reduce animation frequency for mobile to improve performance
+            if (isMobile) {
+                setTimeout(() => requestAnimationFrame(animate), 50); // ~20 FPS instead of 60 FPS
+            } else {
+                requestAnimationFrame(animate);
+            }
         }
 
         initParticles();
