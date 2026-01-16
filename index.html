@@ -693,6 +693,196 @@
             }
         }
 
+        /* Mobile Version Optimizations */
+        body.mobile-version .hero {
+            padding: 120px 20px;
+        }
+
+        body.mobile-version .hero-content {
+            gap: 60px;
+        }
+
+        body.mobile-version .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        body.mobile-version .hero-text h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        body.mobile-version .hero-text p {
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+
+        body.mobile-version .cta-buttons {
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        body.mobile-version .btn {
+            padding: 14px 30px;
+            font-size: 15px;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        body.mobile-version .services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        body.mobile-version .service-card {
+            padding: 35px 25px;
+        }
+
+        body.mobile-version .service-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        body.mobile-version .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        body.mobile-version .project-card {
+            padding: 25px;
+        }
+
+        body.mobile-version .project-content h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        body.mobile-version .about-container {
+            gap: 50px;
+        }
+
+        body.mobile-version .about-content {
+            padding: 40px 20px;
+        }
+
+        body.mobile-version .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        body.mobile-version .skill-item {
+            padding: 12px;
+        }
+
+        body.mobile-version .education-item {
+            padding: 15px;
+        }
+
+        body.mobile-version .abilities-list {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        body.mobile-version .abilities-list li {
+            padding: 10px 15px;
+        }
+
+        body.mobile-version .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        body.mobile-version .contact-card {
+            padding: 30px 20px;
+        }
+
+        body.mobile-version .section-title {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        body.mobile-version .section-subtitle {
+            font-size: 16px;
+            margin-bottom: 50px;
+        }
+
+        body.mobile-version header {
+            padding: 15px 20px;
+        }
+
+        body.mobile-version .logo {
+            font-size: 20px;
+        }
+
+        body.mobile-version .nav-links {
+            gap: 15px;
+        }
+
+        body.mobile-version .nav-links a {
+            font-size: 14px;
+        }
+
+        body.mobile-version .services,
+        body.mobile-version .projects,
+        body.mobile-version .about,
+        body.mobile-version .contact {
+            padding: 70px 20px;
+        }
+
+        body.mobile-version .code-window {
+            padding: 15px;
+        }
+
+        body.mobile-version .code-content {
+            font-size: 12px;
+        }
+
+        /* Mobile Modal Adjustments */
+        @media (max-width: 768px) {
+            .version-modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+
+            .version-modal-content h2 {
+                font-size: 24px;
+            }
+
+            .version-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .version-btn {
+                max-width: none;
+                padding: 25px 20px;
+            }
+
+            .version-icon {
+                font-size: 40px;
+            }
+
+            .version-btn h3 {
+                font-size: 16px;
+            }
+
+            .version-btn p {
+                font-size: 13px;
+            }
+        }
+
         /* Desplazamiento suave */
         html {
             scroll-behavior: smooth;
@@ -745,6 +935,86 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Version Selection Modal */
+        .version-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+
+        .version-modal.hidden {
+            display: none;
+        }
+
+        .version-modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .version-modal-content h2 {
+            color: #60a5fa;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .version-modal-content p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .version-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .version-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            padding: 30px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 180px;
+        }
+
+        .version-btn:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .version-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .version-btn h3 {
+            color: #60a5fa;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .version-btn p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -762,6 +1032,26 @@
         <div class="loading-content">
             <img src="ChatGPT_Image_15_ene_2026__15_04_24-removebg-preview.png" alt="Logo de NEXORA DIGITAL SOLUTIONS" class="loading-logo">
             <div class="loading-text">NEXORA DIGITAL SOLUTIONS</div>
+        </div>
+    </div>
+
+    <!-- Version Selection Modal -->
+    <div id="version-modal" class="version-modal">
+        <div class="version-modal-content">
+            <h2>Selecciona tu versión</h2>
+            <p>Elige cómo quieres ver la aplicación</p>
+            <div class="version-buttons">
+                <button id="mobile-version" class="version-btn mobile-btn">
+                    <div class="version-icon">📱</div>
+                    <h3>Versión Móvil</h3>
+                    <p>Optimizada para teléfonos y tablets</p>
+                </button>
+                <button id="pc-version" class="version-btn pc-btn">
+                    <div class="version-icon">💻</div>
+                    <h3>Versión PC</h3>
+                    <p>Versión completa para computadoras</p>
+                </button>
+            </div>
         </div>
     </div>
     <canvas id="network-canvas" style="position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;"></canvas>
